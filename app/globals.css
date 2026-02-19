@@ -1,0 +1,111 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --font-playfair: "Playfair Display", serif;
+    --font-lora: "Lora", serif;
+    --font-cormorant: "Cormorant Garamond", serif;
+    --font-inter: "Inter", sans-serif;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  ::selection {
+    background-color: #B5866B;
+    color: #FAF7F2;
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply inline-block border border-terracotta text-terracotta px-8 py-3 
+           hover:bg-terracotta hover:text-cream transition-all duration-300 
+           font-sans text-sm tracking-widest uppercase;
+  }
+
+  .btn-dark {
+    @apply inline-block bg-charcoal text-cream px-8 py-3 
+           hover:bg-terracotta transition-all duration-300 
+           font-sans text-sm tracking-widest uppercase;
+  }
+
+  .section-title {
+    @apply font-serif text-3xl md:text-4xl text-charcoal mb-2;
+  }
+
+  .section-subtitle {
+    @apply font-accent italic text-terracotta text-lg;
+  }
+
+  .card {
+    @apply bg-white border border-beige hover:border-parchment 
+           transition-all duration-300 hover:shadow-md;
+  }
+
+  .category-pill {
+    @apply text-xs font-sans uppercase tracking-widest text-terracotta 
+           border border-terracotta/30 px-3 py-1 inline-block;
+  }
+}
+
+/* Tiptap editor styles */
+.ProseMirror {
+  min-height: 400px;
+  outline: none;
+  font-family: var(--font-lora), serif;
+  font-size: 1.05rem;
+  line-height: 1.9;
+  color: #2C2C2C;
+}
+
+.ProseMirror p.is-editor-empty:first-child::before {
+  content: attr(data-placeholder);
+  float: left;
+  color: #D4C5B0;
+  pointer-events: none;
+  height: 0;
+}
+
+.ProseMirror h1, .ProseMirror h2, .ProseMirror h3 {
+  font-family: var(--font-playfair), serif;
+  margin-top: 1.5rem;
+  margin-bottom: 0.75rem;
+}
+
+.ProseMirror blockquote {
+  border-left: 3px solid #B5866B;
+  padding-left: 1.5rem;
+  font-style: italic;
+  font-family: var(--font-cormorant), serif;
+  font-size: 1.25rem;
+  color: #5C5C5C;
+}
+
+/* Page transition */
+.page-enter {
+  animation: fadeIn 0.5s ease-out forwards;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #FAF7F2;
+}
+::-webkit-scrollbar-thumb {
+  background: #D4C5B0;
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #B5866B;
+}
